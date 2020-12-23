@@ -1,0 +1,23 @@
+{
+  "name": "autocomplete",
+  "version": "1.0.0",
+  "description": "a simple web component",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/night5415/autocomplete.git"
+  },
+  "keywords": [
+    "html5",
+    "web-component"
+  ],
+  "author": "Mike Meloy",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/night5415/autocomplete/issues"
+  },
+  "homepage": "https://github.com/night5415/autocomplete#readme"
+}
