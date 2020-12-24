@@ -1,5 +1,5 @@
 {
-  "name": "autocomplete",
+  "name": "me-autocomplete",
   "version": "1.0.0",
   "description": "a simple web component",
   "main": "index.js",
