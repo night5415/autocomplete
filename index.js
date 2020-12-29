@@ -5,12 +5,13 @@ customElements.define(
       super();
       this._list = [];
       this._input;
+      this._dataList;
       this._shadow = this.attachShadow({ mode: "open" });
     }
 
     connectedCallback() {
-      this.render();
-      window.mike = this;
+      const self = this;
+      self.render();
     }
 
     get list() {
@@ -19,7 +20,8 @@ customElements.define(
 
     set list(value) {
       if (!Array.isArray(value)) throw new Error("List must be of type array");
-      this._list = value;
+      // this._list = value;
+      value.forEach((e) => this._dataList.appendChild(e));
     }
 
     static get observedAttributes() {
@@ -42,13 +44,13 @@ customElements.define(
       self._shadow.appendChild(style);
       self._shadow.appendChild(template);
       self._input = self._shadow.querySelector("input");
+      self._dataList = self._shadow.querySelector("datalist");
     }
   }
 );
 
-function onTextChange() {
-  const self = this;
-  console.dir(arguments);
+function test(list) {
+  return list;
 }
 
 function getTemplate(args) {
@@ -58,18 +60,11 @@ function getTemplate(args) {
     slot = document.createElement("slot"),
     attributes = Array.from(args);
 
-  input.addEventListener("keydown", onTextChange);
+  if (!args.name) throw new Error("Name attribute required");
 
   input.setAttribute("type", "text");
-  input.setAttribute("list", "xx");
-  var x = ["mike", "tami"];
-  dataList.id = "xx";
-
-  x.map((y) => {
-    const option = document.createElement("option");
-    option.value = y;
-    dataList.appendChild(option);
-  });
+  input.setAttribute("list", args.name.value);
+  dataList.id = args.name.value;
 
   attributes.forEach((a) => input.setAttribute(a.name, a.value));
   div.appendChild(slot);

@@ -9,8 +9,21 @@
     </script>
   </head>
   <body>
-    <me-autocomplete placeholder="help me">
+    <me-autocomplete placeholder="Select User" name="users" title="User">
       <div>Select User</div>
     </me-autocomplete>
+    <script>
+      const ac = document.querySelector("me-autocomplete");
+
+      fetch("https://jsonplaceholder.typicode.com/users")
+        .then((response) => response.json())
+        .then((json) => {
+          ac.list = json.map((user) => {
+            const option = document.createElement("option");
+            option.value = user.name;
+            return option;
+          });
+        });
+    </script>
   </body>
 </html>
